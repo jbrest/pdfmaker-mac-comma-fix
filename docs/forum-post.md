@@ -14,6 +14,6 @@ The problem is in Adobe's installed `AcrobatUtils.scpt`. PDFMaker sends the path
 
 I published an open-source patcher that repairs the parser locally without redistributing Adobe's files. It validates the installed version, creates a backup, recompiles the helper using Apple's own tools, and supports rollback. The repository also includes tests for one comma, multiple commas, and Adobe's optional fourth parameter.
 
-Repository: REPLACE_WITH_GITHUB_URL
+Repository: https://github.com/jbrest/pdfmaker-mac-comma-fix
 
 Tested with Adobe Acrobat Pro 26.002.21901, Word 16.113.2, and macOS 26.6.2. This is an unofficial workaround; an Acrobat update may overwrite the helper.
