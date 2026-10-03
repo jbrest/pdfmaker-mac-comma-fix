@@ -16,7 +16,7 @@ Limits:
 - The file must be synced to the Mac. The first time Word reads a file this way, macOS asks whether Word may access files managed by OneDrive, and the conversion needs that permission. In testing the prompt appeared once and did not come back on later conversions; expect the same, though macOS can ask again after a OneDrive or system update.
 - If the synced copy isn't on disk yet (a file just created, renamed or moved in SharePoint, or OneDrive still syncing), nothing resolves and the add-in falls back to Adobe's behaviour, which fails with the same 9105 error. Wait for OneDrive to finish and try again.
 - This repository does not contain Adobe's VBA. You extract it from your own installation (step 2) and must not redistribute the resulting `.dotm`.
-- Tested on one Mac. Versions: see the forum post.
+- Tested on one Mac: macOS 27.0.1, Word for Mac 16.113.3, Acrobat Pro 26.002.21931.
 
 ## Build it
 
