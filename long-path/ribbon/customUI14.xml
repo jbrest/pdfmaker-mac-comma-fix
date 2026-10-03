@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+  <ribbon>
+    <tabs>
+      <tab id="ACROBAT_RIBBON2" label="Acrobat (LongPath)" getVisible="GetVisible">
+        <group id="ACROBAT_CREATE" label="PDF">
+          <button id="ACROBAT_CreatePDF" getLabel="GetLabel" imageMso="FileSaveAsPdfOrXps" size="large" onAction="OnAction" getEnabled="GetEnabled" getVisible="GetVisible"/>
+          <button id="ACROBAT_Preferences" getLabel="GetLabel" imageMso="PropertySheet" size="large" getVisible="GetVisible" onAction="OnAction" getEnabled="GetEnabled"/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

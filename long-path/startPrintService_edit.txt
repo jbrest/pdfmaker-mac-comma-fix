@@ -1,0 +1,17 @@
+In the module `link`, sub `startPrintService`, the cloud-document branch begins with an `If` whose
+condition tests `workflowToken` and `InStr(ActiveDocument.path, "https://") = 1`.
+
+Insert the block below immediately above that `If`, and change that `If` to `ElseIf` (keep its
+condition and everything under it as it is, and the existing `End If` closes the new structure).
+
+        'Cloud documents over Word's 255-character limit for Documents.Add: use the synced local file instead.
+        Dim resolvedPath As String
+        resolvedPath = ""
+        If workflowToken <> "macpdfmShowIPM" And InStr(ActiveDocument.path, "https://") = 1 And Len(filePath) > 240 Then
+            On Error Resume Next
+            resolvedPath = AppleScriptTask("AcrobatUtilsLP.scpt", "ResolveCloudDocPath", ActiveDocument.FullName)
+            On Error GoTo 0
+        End If
+        If Len(resolvedPath) > 0 Then
+            filePath = resolvedPath
+        ElseIf <the original condition, unchanged> Then
