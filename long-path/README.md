@@ -46,6 +46,12 @@ You need Python 3 (the macOS one is fine), Word for Mac, and an Adobe Acrobat in
 
 Delete the add-in from the personal Startup folder, rename Adobe's file back, and run `python3 install_longpath_helper.py remove`.
 
+## Troubleshooting
+
+- **Error 5 on every document, even a plain local one.** The helper is probably being blocked by macOS from reading the folder the document is in. Open System Settings > Privacy & Security > Files & Folders, find Microsoft Word, and switch on the folder (Downloads, Desktop, Documents, OneDrive). This was the cause after a Word and Acrobat update in testing: the helper's `cp` of the document failed with "Operation not permitted". The same permission applies to Adobe's own add-in.
+- **Two Acrobat tabs, or error 5 or 9105 again after an Acrobat update.** An Acrobat update can put Adobe's `linkCreation.dotm` back in Word's startup folder and reset Adobe's `AcrobatUtils.scpt`. Rename Adobe's add-in to `.disabled` again (step 9). Two add-ins that share ribbon IDs and callback names can send a click to the wrong one.
+- **To see which step of the helper fails**, temporarily add a dialog before each step (or a `try` that displays the error) in `AcrobatUtilsLP.scpt` and rerun `install_longpath_helper.py` to restore it afterwards.
+
 ## Updates
 
 The new add-in has its own helper and doesn't depend on Adobe's file names, so an Acrobat update won't overwrite it. It still calls Adobe's `MacPDFMLoader.framework`, so a major Acrobat release that changes that framework could break it.
